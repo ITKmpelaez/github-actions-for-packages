@@ -14,7 +14,6 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v1
       - name: npm install and build webpack
@@ -51,6 +50,10 @@ jobs:
           CI: true
   Build-and-Push-Docker-Image:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
     needs: test
     name: Docker Build, Tag, Push
 
